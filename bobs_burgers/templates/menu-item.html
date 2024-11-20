@@ -1,0 +1,14 @@
+<div class="col-5">
+    <h4>{{item['name']}}</h4>
+    <br>
+    Description: {{item['menuDescription']}}<br><br>
+    <b>Price: {{"$%.2f"|format(item['price'])}}</b><br>
+</div>
+<div class="col-2">
+    <img src="{{item['image']}}" class="img-thumbnail">
+</div>
+<form class="col-3" method="post" action="/add_to_order">
+    <input type="hidden" name="itemID" value="{{item['itemID']}}">
+    <button class="btn btn-success btn-lg" type="submit">Add</button><br><br>
+    <textarea name="specialInstruction" placeholder="Special Instructions"></textarea>
+</form>

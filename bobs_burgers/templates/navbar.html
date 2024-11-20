@@ -1,0 +1,28 @@
+    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example" style="padding-top:10px;padding-bottom:40px;">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+          <a class="navbar-brand col-lg-3 me-0" href="/">bob's burgers</a>
+          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('order_operations.menu')}}">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url_for('order_operations.search_order')}}">Track Order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url_for('account_operations.view_account')}}">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url_for('account_operations.logout')}}" onclick="return confirm('Are you sure you want to log out?')">Logout</a>
+            </li>
+          </ul>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+            <a class="btn btn-light" href="{{url_for('order_operations.view_cart')}}" role="button"><img src="static/shopping-cart.png" style="width:20px;height:20px;"></a>
+          </div>
+        </div>
+      </div>
+    </nav>

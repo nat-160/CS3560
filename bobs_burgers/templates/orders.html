@@ -1,0 +1,21 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>Bob's Burgers</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="container" style="padding-top:10px;padding-bottom:10px;">
+      <h1>Orders</h1>
+      <h4 style="padding-top:10px;padding-bottom:10px;">Current Orders</h4>
+      {% for order in orders if order['status'] != "complete" %}
+        {% include 'order-item.html' %}
+      {% endfor %}
+      <h4 style="padding-top:10px;padding-bottom:10px;">Past Orders</h4>
+      {% for order in orders if order['status'] == "complete"  %}
+        {% include 'order-item.html' %}
+      {% endfor %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Bob's Burgers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+      input[type=button], input[type=submit], input[type=reset] {
+        background-color: #198754;
+        border: none;
+        color: white;
+      }
+    </style>  
+  </head>
+
+  <body class="text-center">
+    <!--<a href="/setupDB">Set up DB</a>
+    <a href="/getallcustomer">ALL Customer</a> -->
+    {% include 'navbar-i.html' %}  
+      <div class="container">
+        <h1 style="padding-top:10px;padding-bottom:10px;">Sign In</h1>
+        <form class="needs-validation" method="post" action="/login" >
+          <main class="form-signin w-100 m-auto">
+              <img class="mb-4" src="static/hamburger.png" alt="" width="72" height="57">
+              {% for error in errors %}
+                <li>{{error}}</li>
+              {% endfor %}</div>
+              <div class="container" style="padding-top:20px;">
+              <div class="form-floating">
+                <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div style="padding-top:10px;padding-bottom:10px;"></div>
+              <div class="form-floating">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                <label for="floatingPassword">Password</label>
+              </div> 
+            <div class="container" style="padding-top:10px;">
+              <button class="btn btn-success btn-lg" type="submit">Sign-In</button>
+            </div>
+          
+            <div class="container" style="padding-top:10px;">
+              <a class="btn btn-secondary btn-lg" href="{{ url_for('account_operations.create_account') }}" role="button">Create Account</a>
+            </div>
+          </main>
+        </form>
+      </div>
+    {% include 'footer.html' %}
+  </body>
+  
+</html>

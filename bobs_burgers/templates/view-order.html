@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Bob's Burgers</title>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="container">
+      <h1>View Order</h1>
+      <h3>Order #{{order['orderID']}}</h3>
+      <b>Order Status: 
+        {{"Pending" if order['orderstatus'] == "0" else "In progress" if order['orderstatus'] == "1" else "Ready for pickup" if order['orderstatus'] == "2" else "Picked up" if order['orderstatus'] == "3" else "Cancelled" if order['orderstatus'] == "-1" else "Unknown"}}
+      </b>
+      {% for item in order_items %}
+        <div class="row" style="padding-top:20px;">{% include 'view-order-subitem.html' %}</div>
+      {% endfor %}
+      <div class="row" style="padding-top: 10px;" >
+        <div class="col-7">
+          <h3>Total</h3>
+        </div>
+        <div class="col-2" style="text-align: center">
+          <h3>{{"$%0.2f"|format(order['amount'])}}</h3>
+        </div>
+      </div>
+      <div class="row" style="padding-top:20px;padding-bottom:20px">
+        <div class="col-4">
+          <a href="{{url_for('order_operations.menu')}}" class="btn btn-success btn-lg" type="button">Close</a>
+        </div>
+      </div>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>

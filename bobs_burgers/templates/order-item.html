@@ -1,0 +1,19 @@
+<div class="container" style="padding-bottom:10px;">
+  <p>#{{order['order-id']}} - Status: {{"In progress" if order['status'] == "progress" else "Pending" if order['status'] == "pending" else "Complete"}}<br> 
+    Order placed by {{order['name']}} (Phone: {{order['phoneNumber']}}) on {{order['date']}}<br>
+    Order total: {{"$%0.2f"|format(order['amount'])}}<br>
+    Special Instructions: {{order['instructions']}}<br>
+    ---------------------------------------------------------------
+    <table style="none">
+      <tr>
+        <th>#</th>
+        <th>Item</th>
+        <th>Special Instructions</th>
+        <th>Price</th>
+      </tr>
+      {% for item in order_items if item['order-id'] == order['order-id'] %}
+        {% include 'order-subitem.html' %}
+      {% endfor %} 
+    </table>
+  </p>
+</div>

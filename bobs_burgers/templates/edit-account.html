@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <title>Bob's Burgers</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}  
+    <div class="container">
+      <h1 style="padding-top:10px;padding-bottom:10px;">Edit Account</h1>
+      {% for error in errors %}
+        <li>{{error}}</li>
+      {% endfor %}
+      <form class="needs-validation" method="post" action="/send_account">
+      <div class="form-outline w-50" style="padding-bottom:10px;">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Name *</span>
+          <input type="text" class="form-control" value="{{user['name']}}" aria-label="Name" aria-describedby="basic-addon1" name="name" required>
+        </div>
+      </div>
+      <div class="form-outline w-50" style="padding-bottom:10px;">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Email *</span>
+          <input type="text" class="form-control" value="{{user['email']}}" aria-label="Email" aria-describedby="basic-addon1" name="email" required>
+        </div>
+      </div>  
+      <div class="form-outline w-50" style="padding-bottom:10px;">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Phone Number *</span>
+          <input type="text" class="form-control" value="{{user['phoneNumber']}}" aria-label="Phone Number" aria-describedby="basic-addon1" name="pNumber" required>
+        </div>
+      </div>         
+      <div class="form-outline w-75" style="padding-bottom:10px;">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Password</span>
+          <input type="password" class="form-control" aria-label="************" aria-describedby="basic-addon1" name="password">
+        </div>
+      </div>
+      <div class="form-outline w-75" style="padding-bottom:10px;">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Reenter Password</span>
+          <input type="password" class="form-control" aria-label="**************" aria-describedby="basic-addon1" name="rpassword">
+        </div>
+      </div>
+      <button class="btn btn-outline-success btn-lg" type="submit">Save</button>    
+      <a class="btn btn-outline-secondary btn-lg" href="{{url_for('account_operations.view_account')}}" role="button">Cancel</a>
+    </div>
+  </form>
+    {% include 'footer.html' %}
+  </body>
+  
+</html>

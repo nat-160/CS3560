@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Bob's Burgers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+      input[type=button], input[type=submit], input[type=reset] {
+        background: none;
+        border: none;
+        color: black;
+      }
+    </style> 
+  </head>
+
+  <body>
+    {% include 'navbar-i.html' %} 
+    <form class="needs-validation" method="post" action="/new_account" >
+      <div class="container" >
+        <h1 style="padding-top:10px;padding-bottom:10px;">Create Account</h1>
+          {% for error in errors %}
+            <li>{{error}}</li>
+          {% endfor %}
+          <div class="input-group mb-3" style="padding-bottom:10px;">
+            <div class="row">
+              <div class="col-3">
+                <span class="input-group-text" id="basic-addon1">Name</span>
+              </div>
+              <div class="col-4">
+                <input type="text" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1" required name='fname'>
+              </div>
+              <div class="col-4">
+                <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1" required name='lname'>
+              </div>
+            </div>
+          </div>
+          <div class="form-outline w-50" style="padding-bottom:10px;">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Email</span>
+              <input type="text" class="form-control" placeholder="email@server.com" aria-label="Email" aria-describedby="basic-addon1" required name='email'>
+            </div>
+          </div>  
+          <div class="form-outline w-50" style="padding-bottom:10px;">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Phone Number</span>
+              <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" aria-label="Phone" aria-describedby="basic-addon1" required name='pNumber'>
+            </div>
+          </div>              
+          <div class="form-outline w-75" style="padding-bottom:10px;">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Password</span>
+              <input type="password" class="form-control" aria-label="Password" aria-describedby="basic-addon1" required name='password'>
+            </div>
+          </div>
+          <div class="form-outline w-75" style="padding-bottom:10px;">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Reenter Password</span>
+              <input type="password" class="form-control" aria-label="Password" aria-describedby="basic-addon1" required name='rpassword'>
+            </div>
+          </div>
+        <button class="btn btn-success btn-lg" type="submit">Create Account</button>      
+      </div>
+    </form>
+    {% include 'footer.html' %}
+  </body>
+  
+</html>

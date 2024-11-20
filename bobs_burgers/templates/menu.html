@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="container">
+      <h1 style="padding-bottom: 20px">Menu</h1>
+    </div>
+    {%for menu in menus if menu['startTime'] <= time and menu['endTime'] >= time %}
+    <div class="container">
+      <h2>{{menu['menuName']}}</h2>
+      <p>Available from {{menu['startTimeRaw']}} to {{menu['endTimeRaw']}}</p>
+      {% for item in items if item['menuID'] == menu['menuID'] and item['state'] == "enabled" %}
+        <div class="row" style="padding-top:20px;">{% include 'menu-item.html' %}</div>
+      {% endfor %}
+    </div>
+    {%endfor%}
+    <hr>
+    <div class="container">
+      <h1 style="padding-bottom: 20px">Other Menus</h1>
+      <p>These menus are currently unavailable, but keep an eye out for them!</p>
+    </div>
+    {%for menu in menus if menu['startTime'] >= time or menu['endTime'] <= time %}
+    <div class="container">
+      <h2>{{menu['menuName']}}</h2>
+      <p>Available from {{menu['startTimeRaw']}} to {{menu['endTimeRaw']}}</p>
+      {% for item in items if item['menuID'] == menu['menuID'] and item['state'] == "enabled" %}
+        <div class="row" style="padding-top:20px;">{% include 'menu-item-disabled.html' %}</div>
+      {% endfor %}
+    </div>
+    {%endfor%}
+    {% include 'footer.html' %}
+  </body>
+</html>

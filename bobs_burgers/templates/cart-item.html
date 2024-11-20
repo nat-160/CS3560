@@ -1,0 +1,12 @@
+<div class="col-5">
+  <h4>{{item['item-name']}}</h4>
+  <br>
+  Special Instructions: {{item['specialInstruction']}}<br>
+</div>
+<div class="col-2">
+  <img src="{{item['image']}}" class="img-thumbnail">
+</div>
+<div class="col-5">
+    <h3>{{"$%0.2f"|format(item['price'])}}</h3>
+    <a href="/remove_from_cart?id={{item['cartItemID']}}" style="color: red">Remove</a>
+</div>
